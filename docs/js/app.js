@@ -3,6 +3,9 @@
 
   const ESPERA_ESCRIPTURA = 300;
 
+  // Enllaç al diccionari de l'IEC per a les paraules vàlides. {paraula} se substitueix per l'entrada.
+  const URL_DIEC = 'https://dlc.iec.cat/Results?EntradaText={paraula}';
+
   const formulari = document.getElementById('formulari');
   const camp = document.getElementById('paraula');
   const resultat = document.getElementById('resultat');
@@ -18,6 +21,15 @@
     return el;
   }
 
+  function enllacDiec(entrada) {
+    const a = element('a', 'diec', 'DIEC2 ↗');
+    a.href = URL_DIEC.replace('{paraula}', encodeURIComponent(entrada));
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.title = `Consulta «${entrada}» al diccionari de l'IEC`;
+    return a;
+  }
+
   function llistaEntrades(entrades) {
     const ul = element('ul', 'entrades');
     for (const { entrada, descripcio, model } of entrades) {
@@ -25,7 +37,8 @@
       li.append(
         element('span', 'mot', entrada),
         element('span', 'categoria', descripcio),
-        element('span', 'model', `model flexiu ${model || '—'}`)
+        element('span', 'model', `model flexiu ${model || '—'}`),
+        enllacDiec(entrada)
       );
       ul.append(li);
     }

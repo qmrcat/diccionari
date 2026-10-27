@@ -76,6 +76,10 @@ El fitxer `docs/.nojekyll` evita que GitHub processi la web amb Jekyll.
 Es pot enllaçar una consulta directament: `https://<usuari>.github.io/<repositori>/?p=col·legi`
 (els enllaços antics amb `#col·legi` continuen funcionant).
 
+Quan una paraula és vàlida, cada entrada porta un enllaç «DIEC2 ↗» al diccionari de l'IEC. L'adreça és a
+la constant `URL_DIEC` de `docs/js/app.js` (`{paraula}` se substitueix per l'entrada); si l'IEC canvia
+l'estructura de les adreces, només cal canviar-la allà.
+
 Atenció: `https://github.com/<usuari>/<repositori>` és la pàgina del codi; la web publicada és a
 `https://<usuari>.github.io/<repositori>/`.
 

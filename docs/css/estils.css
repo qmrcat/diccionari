@@ -141,6 +141,15 @@ h1 {
   color: var(--text-suau);
 }
 
+.entrades .diec {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.entrades .diec:hover { text-decoration: underline; }
+
 .bloc {
   margin-top: 20px;
   padding: 14px 16px;
