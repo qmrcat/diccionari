@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API Consulta DISC</title>
+  <meta name="description" content="Consulta el DISC i obté el resultat en format JSON.">
+  <link rel="stylesheet" href="css/estils.css">
+</head>
+<body>
+  <main class="contenidor">
+    <pre id="json" class="json" hidden></pre>
+
+    <article id="ajuda" class="ajuda" hidden>
+      <h1>API Consulta DISC</h1>
+      <p class="subtitol">
+        Resultats en JSON. <a href="./">Tornar al cercador</a>
+      </p>
+
+      <h2>1. Al navegador: <code>api.html?p=paraula</code></h2>
+      <p>Mostra el resultat en JSON. Per consultar-ne diverses alhora, separa-les per comes o repeteix
+        <code>p</code>:</p>
+      <ul>
+        <li><a href="?p=cases">api.html?p=cases</a></li>
+        <li><a href="?p=casa,vaig,xyzzy">api.html?p=casa,vaig,xyzzy</a></li>
+      </ul>
+      <p class="nota">GitHub Pages només serveix fitxers estàtics: el JSON el construeix el JavaScript de la
+        pàgina. Un programa que no executi JavaScript (curl, un servidor…) rebrà l'HTML, no el JSON. Per a
+        aquests casos, fes servir les opcions 2 o 3.</p>
+
+      <h2>2. Des d'una altra web: <code>diccionari.js</code></h2>
+<pre class="codi">&lt;script src="<span class="url-base"></span>js/diccionari.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  Diccionari.consulta('cases').then((r) =&gt; {
+    console.log(r.valida, r.estat);  // true "forma"
+  });
+&lt;/script&gt;</pre>
+      <p>La llibreria descarrega només els fitxers de dades que necessita i els guarda en memòria.</p>
+
+      <h2>3. Els fitxers JSON directament</h2>
+      <p>Normalitza la paraula (minúscules, sense accents, ni <code>·</code>, guionets o apòstrofs) i agafa'n
+        les tres primeres lletres: «Cases» → <code>cases</code> →
+        <a href="dades/c/as.json"><code>dades/c/as.json</code></a>. Hi trobaràs:</p>
+      <ul>
+        <li><code>e[clau]</code>: entrades del DISC <code>[entrada, categoria, model]</code></li>
+        <li><code>f[clau]</code>: formes flexionades <code>[forma, entrada]</code></li>
+        <li><code>c[clau]</code>: formes només del corrector de Softcatalà</li>
+      </ul>
+      <p>La llista de fitxers existents és a <a href="dades/index.json"><code>dades/index.json</code></a>.</p>
+
+      <h2>Format de la resposta</h2>
+<pre class="codi">{
+  "paraula": "cases",
+  "estat": "forma",          // entrada | forma | no-confirmada | no-trobada
+  "valida": true,            // true per a «entrada» i «forma»
+  "entrades": [],            // entrades del DISC amb aquesta grafia
+  "formes": {                // null si no és una forma flexionada
+    "escrites": ["cases", "casés"],
+    "de": [{ "entrada": "casa", "categoria": "f.", "descripcio": "nom femení", "model": "203" }, …]
+  },
+  "corrector": [],           // només amb «no-confirmada» (verbs irregulars…)
+  "suggeriments": []         // entrades que comencen igual, si no és vàlida
+}</pre>
+    </article>
+  </main>
+
+  <script src="js/diccionari.js"></script>
+  <script src="js/api.js"></script>
+</body>
+</html>

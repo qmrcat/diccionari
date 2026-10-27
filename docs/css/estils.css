@@ -1,0 +1,226 @@
+:root {
+  --fons: #f6f4ef;
+  --superficie: #ffffff;
+  --text: #1f2328;
+  --text-suau: #5c6370;
+  --vora: #dcd8cf;
+  --accent: #b5442b;
+  --accent-text: #ffffff;
+  --ok: #1f7a3d;
+  --ok-fons: #e5f4ea;
+  --ko: #a32323;
+  --ko-fons: #fbe7e7;
+  --avis: #8a5a00;
+  --avis-fons: #fdf3dc;
+  --radi: 10px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fons: #16181c;
+    --superficie: #1f2228;
+    --text: #e8e6e1;
+    --text-suau: #a0a6b0;
+    --vora: #343841;
+    --accent: #e0694c;
+    --accent-text: #16181c;
+    --ok: #6fd393;
+    --ok-fons: #17301f;
+    --ko: #ff8a8a;
+    --ko-fons: #3a1c1c;
+    --avis: #f2c46b;
+    --avis-fons: #352d17;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--fons);
+  color: var(--text);
+  font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+a { color: var(--accent); }
+
+.contenidor {
+  flex: 1;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 16px 24px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitol {
+  margin: 4px 0 28px;
+  color: var(--text-suau);
+}
+
+.cercador {
+  display: flex;
+  gap: 8px;
+}
+
+.cercador input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 1.2rem;
+  color: var(--text);
+  background: var(--superficie);
+  border: 1px solid var(--vora);
+  border-radius: var(--radi);
+}
+
+.cercador input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.cercador button {
+  padding: 0 20px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent-text);
+  background: var(--accent);
+  border: 0;
+  border-radius: var(--radi);
+  cursor: pointer;
+}
+
+.resultat { margin-top: 24px; }
+.resultat:empty { display: none; }
+
+.veredicte {
+  padding: 16px 18px;
+  border-radius: var(--radi);
+  font-size: 1.15rem;
+}
+
+.veredicte.si { background: var(--ok-fons); color: var(--ok); }
+.veredicte.no { background: var(--ko-fons); color: var(--ko); }
+.veredicte.potser { background: var(--avis-fons); color: var(--avis); }
+.veredicte strong { font-size: 1.3rem; }
+
+.entrades {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.entrades li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 10px 14px;
+  background: var(--superficie);
+  border: 1px solid var(--vora);
+  border-radius: var(--radi);
+  margin-bottom: 8px;
+}
+
+.entrades .mot { font-weight: 600; font-size: 1.1rem; }
+.entrades .categoria { color: var(--text-suau); }
+.entrades .model {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--text-suau);
+}
+
+.bloc {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: var(--radi);
+  background: var(--superficie);
+  border: 1px solid var(--vora);
+}
+
+.bloc.avis { background: var(--avis-fons); }
+.bloc h2 { margin: 0 0 8px; font-size: 1rem; }
+.bloc p { margin: 0 0 8px; }
+
+.suggeriments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.suggeriments button {
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--fons);
+  border: 1px solid var(--vora);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.suggeriments button:hover { border-color: var(--accent); }
+
+.nota {
+  margin-top: 32px;
+  font-size: 0.9rem;
+  color: var(--text-suau);
+}
+
+.peu {
+  padding: 16px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-suau);
+  border-top: 1px solid var(--vora);
+}
+
+.peu p { margin: 4px 0; }
+
+.json,
+.codi {
+  margin: 0;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font: 0.9rem/1.45 ui-monospace, "Cascadia Mono", Consolas, monospace;
+  background: var(--superficie);
+  border: 1px solid var(--vora);
+  border-radius: var(--radi);
+}
+
+.ajuda h2 {
+  margin: 32px 0 8px;
+  font-size: 1.15rem;
+}
+
+.ajuda code {
+  font: 0.9em ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+.ocult {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (max-width: 480px) {
+  .contenidor { padding-top: 28px; }
+  h1 { font-size: 1.6rem; }
+  .cercador button { padding: 0 14px; }
+}

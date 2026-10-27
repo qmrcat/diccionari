@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consulta DISC</title>
+  <meta name="description" content="Comprova si una paraula és al Diccionari Informatitzat de l'Scrabble en Català (DISC).">
+  <link rel="stylesheet" href="css/estils.css">
+</head>
+<body>
+  <main class="contenidor">
+    <header>
+      <h1>Consulta DISC</h1>
+      <p class="subtitol">Comprova si una paraula és al Diccionari Informatitzat de l'Scrabble en Català</p>
+    </header>
+
+    <form id="formulari" class="cercador" autocomplete="off" role="search">
+      <label for="paraula" class="ocult">Paraula</label>
+      <input id="paraula" name="paraula" type="search" placeholder="Escriu una paraula…"
+             autocapitalize="none" spellcheck="false" autofocus>
+      <button type="submit">Consulta</button>
+    </form>
+
+    <section id="resultat" class="resultat" aria-live="polite"></section>
+
+    <p class="nota">
+      Accents, <em>ç</em>, punt volat, guionets i majúscules no compten: «abac», «àbac» i «ÀBAC» donen el mateix
+      resultat, igual que «col·legi», «col.legi» i «collegi».
+      Els plurals, femenins i formes verbals es comproven amb el corrector de Softcatalà i només es donen per
+      bones si pertanyen a una entrada del DISC. Les formes de verbs irregulars (vaig, tinc, sóc…) surten com a
+      «no confirmades»: comprova'n l'infinitiu.
+    </p>
+  </main>
+
+  <footer class="peu">
+    <p><span id="info-dades">Carregant dades…</span> · <a href="api.html">API</a></p>
+    <p>
+      Dades: <a href="https://diccionari.totescrable.cat" rel="noopener">Diccionari Informatitzat de l'Scrabble en Català</a>
+      © 2012–2025 Joan Montané, amb llicència dual GPLv3 i CC BY-SA 3.0.
+    </p>
+    <p>
+      Formes flexionades: corrector ortogràfic català de <a href="https://www.softcatala.org" rel="noopener">Softcatalà</a>
+      (Joan Moratinos, Joan Montané i altres), llicència GPL.
+    </p>
+  </footer>
+
+  <script src="js/diccionari.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
