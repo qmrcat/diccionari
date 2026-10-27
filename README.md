@@ -10,10 +10,12 @@ diccionari/
 ├── DISC2-Compacte.txt     diccionari original (entrada|categoria|model_flexiu)
 ├── fonts/hunspell/        corrector de Softcatalà (ca.aff, ca.dic) per a les formes flexionades
 ├── eines/
-│   └── genera_json.py     converteix el .txt en fitxers JSON
+│   ├── genera_json.py     converteix el .txt en fitxers JSON
+│   └── genera_icones.py   crea la favicon (SVG, ICO i icona per a mòbils)
 └── docs/                  la web (és el que publica GitHub Pages)
     ├── index.html         cercador (admet ?p=paraula)
     ├── api.html           resultat en JSON (?p=paraula) i documentació de l'API
+    ├── favicon.svg, favicon.ico, apple-touch-icon.png
     ├── css/estils.css
     ├── js/diccionari.js   llibreria de consulta, sense DOM (la fan servir les dues pàgines)
     ├── js/app.js          interfície del cercador
